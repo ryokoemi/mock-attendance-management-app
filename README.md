@@ -1,4 +1,4 @@
-# フリマアプリ
+# 勤怠管理アプリ
 ## 環境構築
 #### Dockerビルド
 1. ```git clone git@github.com:ryokoemi/mock-flea-market-app.git```
