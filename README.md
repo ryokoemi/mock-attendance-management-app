@@ -72,6 +72,8 @@ src/database/seeders/DatabaseSeeder.php
 ## ER図
 ![画像](https://coachtech-lms-bucket.s3.ap-northeast-1.amazonaws.com/question/20251205051037_ER_attendance.png)
 ## URL
-- 開発環境：http://localhost/
 - phpMyAdmin:：http://localhost:8080/
+- ログイン（一般ユーザー）：http://localhost/login
+- ログイン（管理者）：http://localhost/admin/login
+
 
