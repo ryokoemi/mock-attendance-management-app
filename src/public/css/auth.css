@@ -1,0 +1,87 @@
+/* 認証画面共通レイアウト
+   対象: register.blade.php / login.blade.php（一般・管理者）
+*/
+
+/* ヘッダー下の余白 */
+.auth-page {
+    margin-top: 10px;
+    /* ヘッダーとタイトルの間隔 */
+}
+
+/* タイトル「ログイン」「管理者ログイン」「会員登録」 */
+.auth-page__title {
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    /* タイトルと最初のフォームの間隔 */
+}
+
+/* フォーム全体（既存の .c-form と併用） */
+.auth-form {
+    width: 100%;
+}
+
+/* 各入力とボタンの間隔 */
+.auth-form__group {
+    margin-bottom: 32px;
+}
+
+/* ラベル */
+.auth-form__label {
+    display: block;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 6px;
+}
+
+/* 入力欄：幅680pxいっぱい、高さ45px、枠線黒 */
+.auth-form__input {
+    width: 100%;
+    height: 45px;
+    padding: 10px 12px;
+    border: 1px solid #000000;
+    font-size: 18px;
+    box-sizing: border-box;
+}
+
+/* 黒いボタン：幅680px、高さ60px */
+.auth-form__button {
+    display: block;
+    width: 100%;
+    height: 60px;
+    line-height: 60px;
+    background-color: #000000;
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+}
+
+.auth-form__button:hover {
+    opacity: 0.9;
+}
+
+/* 下部リンク（「会員登録はこちら」「ログインはこちら」） */
+.auth-form__link {
+    display: block;
+    margin-top: 12px;
+    text-align: center;
+    font-size: 14px;
+    color: #0073CC;
+    text-decoration: none;
+}
+
+.auth-form__link:hover {
+    text-decoration: underline;
+}
+
+/* エラーメッセージ表示 */
+.auth-form__error {
+    margin-top: 8px;
+    font-size: 12px;
+    line-height: 0.5;
+    color: #ff0000;
+}

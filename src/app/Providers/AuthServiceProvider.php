@@ -24,7 +24,13 @@ class AuthServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerPolicies();
+        // 追加: admin 権限は is_admin フラグで判定
+        Gate::define('admin', function ($user) {
 
-        //
+             // ★ 一時的にデバッグ
+        //dd('Gate admin', $user, $user ? $user->is_admin : null);
+
+            return (bool) ($user->is_admin ?? false);
+        });
     }
 }

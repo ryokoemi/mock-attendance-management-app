@@ -1,0 +1,112 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Segoe UI', sans-serif;
+    color: #000;
+    background-color: #ffffff;
+}
+
+/* ------------------------------
+   レイアウト（メイン部分）
+------------------------------ */
+
+main {
+    min-height: calc(100vh - 60px);
+    display: flex;
+    justify-content: center;
+    padding: 40px 20px 60px;
+    box-sizing: border-box;
+}
+
+/* 共通ラッパー：必要に応じて @section 内で使用 */
+.l-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* 幅680pxのフォーム系（login / register 用） */
+.l-container--narrow {
+    width: 100%;
+    max-width: 680px;
+    margin: 0 auto;
+}
+
+/* 幅900pxの一覧テーブル用 */
+.l-container--wide {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* ------------------------------
+   ヘッダー共通（パターン1〜4）
+------------------------------ */
+
+.header {
+    background-color: #000000;
+    color: #ffffff;
+    height: 60px;
+}
+
+.header__inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    height: 100%;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+
+/* 左ロゴエリア */
+.header__logo-area {
+    display: flex;
+    align-items: center;
+}
+
+.header__logo {
+    display: inline-flex;
+    align-items: center;
+}
+
+.header__logo img {
+    height: 30px;
+    /* スクショに近い高さ */
+    display: block;
+}
+
+/* 右ナビ（リンク群） */
+.header__nav {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+/* a or button 共通スタイル */
+.header__nav-link {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+.header__nav-link:hover {
+    text-decoration: underline;
+}
+
+/* ログアウトだけ <button> を使う場合用 */
+.header__nav-form {
+    margin: 0;
+}

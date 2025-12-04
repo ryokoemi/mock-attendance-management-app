@@ -17,10 +17,28 @@ class UserFactory extends Factory
         return [
             'name' => $this->faker->name(),
             'email' => $this->faker->unique()->safeEmail(),
-            'email_verified_at' => now(),
-            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'password' => bcrypt('password'),
             'remember_token' => Str::random(10),
+            'email_verified_at' => now(),
+            'is_admin' => false,
+            'status_id' => null,
         ];
+    }
+
+    public function asAdmin()
+    {
+        return $this->state([
+            'is_admin' => true,
+            'status_id' => null,
+        ]);
+    }
+
+    public function asGeneral($statusId)
+    {
+        return $this->state([
+            'is_admin' => false,
+            'status_id' => $statusId,
+        ]);
     }
 
     /**

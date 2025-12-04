@@ -1,0 +1,451 @@
+/* 勤怠登録画面（一般ユーザー向け）用
+   /attendance  の4パターン共通スタイル
+*/
+main {
+    padding: 0;
+}
+
+/* 背景色 #F0EFF2（この画面のみ） */
+.attendance-page {
+    width: 100%;
+    min-height: calc(100vh - 60px);
+    background-color: #F0EFF2;
+    display: flex;
+    justify-content: center;
+    padding: 80px 20px 60px;
+    box-sizing: border-box;
+}
+
+/* 中央寄せコンテナ（内容は縦並びで中央に） */
+.attendance-page__inner {
+    width: 100%;
+    max-width: 680px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* ステータスバッジ（勤務外／出勤中／休憩中／退勤済） */
+.attendance-status {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 88px;
+    height: 32px;
+    border-radius: 16px;
+    background-color: #C8C8C8;
+    color: #696969;
+    font-size: 14px;
+    margin-bottom: 32px;
+}
+
+/* 日付（YYYY年M月D日（曜）） */
+.attendance-date {
+    font-size: 24px;
+    font-weight: normal;
+    margin-bottom: 24px;
+}
+
+/* 現在時刻 or 退勤時刻（大きく表示） */
+.attendance-time {
+    font-size: 64px;
+    font-weight: bold;
+    margin-bottom: 56px;
+}
+
+/* 「お疲れ様でした。」用 */
+.attendance-message {
+    margin-top: 40px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* ボタン共通 */
+.attendance-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+}
+
+/* 1つだけボタンを出すときも中央に */
+.attendance-buttons--single {
+    justify-content: center;
+}
+
+/* 実際のボタン */
+.attendance-button {
+    width: 200px;
+    height: 64px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+/* 黒ボタン（出勤・退勤） */
+.attendance-button--primary {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+/* 白ボタン（休憩入・休憩戻） */
+.attendance-button--secondary {
+    background-color: #ffffff;
+    color: #000000;
+    border: 1px solid #C8C8C8;
+}
+
+.attendance-button:hover {
+    opacity: 0.9;
+}
+
+/* ==============================
+   一覧テーブル系（(4)(5)(6)(8)(9)(10)(11)(12)(13)）
+   横幅900pxコンテナ内で使用
+============================== */
+
+/* 画面背景とコンテナ */
+.attendance-list-page {
+    width: 100%;
+    min-height: calc(100vh - 60px);
+    background-color: #F0EFF2;
+    display: flex;
+    justify-content: center;
+    padding: 60px 20px 80px;
+    box-sizing: border-box;
+}
+
+.attendance-list-page__inner {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* タイトル（左に縦線） */
+.attendance-list-title {
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 24px;
+}
+
+.attendance-list-title::before {
+    content: "";
+    display: inline-block;
+    width: 4px;
+    height: 28px;
+    margin-right: 12px;
+    background-color: #000000;
+}
+
+/* 年月／日付行（白・角丸） */
+.attendance-list-date-row {
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 12px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    margin-bottom: 24px;
+}
+
+/* 中央：カレンダーアイコン＋年月/日付 */
+.attendance-list-date-center {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* カレンダーアイコンを小さくする */
+.attendance-list-date-center img {
+    height: 16px;
+    width: auto;
+}
+
+/* 左右：前月/翌月 or 前日/翌日 */
+.attendance-list-date-nav {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 14px;
+}
+
+.attendance-list-date-nav img {
+    height: 12px;
+    width: auto;
+    opacity: 0.7;
+}
+
+.attendance-list-date-arrow--right {
+    transform: scaleX(-1);
+}
+
+/* ナビリンク */
+.attendance-list-date-link {
+    color: #000000;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.attendance-list-date-link:hover {
+    text-decoration: underline;
+}
+
+/* 一覧テーブル本体 */
+.attendance-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+    /* 角丸を有効にする */
+}
+
+.attendance-table thead tr {
+    background-color: #ffffff;
+}
+
+.attendance-table th,
+.attendance-table td {
+    padding: 12px 16px;
+    font-size: 16px;
+    color: #737373;
+    border-bottom: 2px solid #E1E1E1;
+    text-align: center;
+}
+
+.attendance-table th:first-child,
+.attendance-table td:first-child {
+    text-align: left;
+}
+
+/* 上の行だけ上角丸、最終行だけ下角丸 はtrに対して実現 */
+.attendance-table thead tr:first-child th:first-child {
+    border-top-left-radius: 8px;
+}
+
+.attendance-table thead tr:first-child th:last-child {
+    border-top-right-radius: 8px;
+}
+
+.attendance-table tbody tr:last-child td:first-child {
+    border-bottom-left-radius: 8px;
+}
+
+.attendance-table tbody tr:last-child td:last-child {
+    border-bottom-right-radius: 8px;
+}
+
+.attendance-table tbody td {
+    font-weight: bold;
+}
+
+.attendance-table th.attendance-table__cell-name,
+.attendance-table td.attendance-table__cell-name {
+    text-align: center;
+    padding-left: 0;
+}
+
+.attendance-table td.attendance-table__empty {
+    text-align: center;
+    padding: 24px 0;
+}
+
+
+/* 「詳細」リンク */
+.attendance-table__link-detail {
+    font-weight: bold;
+    color: #000000;
+    text-decoration: none;
+}
+
+.attendance-table__link-detail:hover {
+    text-decoration: underline;
+}
+
+/* CSV出力ボタン（スタッフ別月次のみ） */
+.attendance-list-csv {
+    margin-top: 24px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.attendance-list-csv__button {
+    width: 184px;
+    height: 50px;
+    background-color: #000000;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 50px;
+    text-decoration: none;
+}
+
+/* 勤怠詳細・承認画面共通テーブル（(5)(9)(13)） */
+.attendance-detail-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.attendance-detail-table th,
+.attendance-detail-table td {
+    padding: 20px 24px;
+    font-size: 16px;
+    border-bottom: 2px solid #E1E1E1;
+}
+
+/* 左側の項目名セル */
+.attendance-detail-table th {
+    width: 25%;
+    color: #737373;
+    font-weight: bold;
+    text-align: left;
+    padding-left: 32px;
+    /* 項目名前に少しスペース */
+}
+
+/* 右側の中身セル */
+.attendance-detail-table td {
+    font-weight: bold;
+    text-align: left;
+    /* 中身も左揃え */
+}
+
+/* 最終行の下だけ角丸 */
+.attendance-detail-table tbody tr:last-child td:first-child {
+    border-bottom-left-radius: 8px;
+}
+
+.attendance-detail-table tbody tr:last-child td:last-child {
+    border-bottom-right-radius: 8px;
+}
+
+/* 勤怠詳細・承認画面共通のフッター行 */
+.attendance-detail-footer {
+    margin-top: 24px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.attendance-detail-footer__note {
+    color: #FF0000;
+    font-size: 14px;
+    margin: 0;
+}
+
+/* ==============================
+   勤怠詳細画面用
+============================== */
+
+.attendance-detail-input {
+    width: 90px;
+    height: 32px;
+    border-radius: 4px;
+    border: 1px solid #E1E1E1;
+    text-align: center;
+    font-size: 14px;
+    box-sizing: border-box;
+    margin: 0 4px;
+}
+
+.attendance-detail-textarea {
+    width: 100%;
+    min-height: 80px;
+    border-radius: 4px;
+    border: 1px solid #E1E1E1;
+    font-size: 14px;
+    padding: 8px;
+    box-sizing: border-box;
+}
+
+.attendance-detail-message {
+    color: #ff0000;
+    text-align: right;
+    margin-bottom: 12px;
+    font-size: 14px;
+}
+
+.attendance-detail-error {
+    margin-top: 4px;
+    font-size: 12px;
+    color: #ff0000;
+}
+
+/* 右下の「修正」ボタン：横130×縦50 */
+.attendance-detail-submit {
+    width: 130px;
+    height: 50px;
+    background-color: #000000;
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+.attendance-detail-submit:hover {
+    opacity: 0.9;
+}
+
+/* ==============================
+   申請一覧（一般・管理者）
+============================== */
+
+.request-tabs {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 8px;
+    font-size: 16px;
+}
+
+.request-tabs__item {
+    cursor: pointer;
+    text-decoration: none;
+    color: #000000;
+}
+
+.request-tabs__item--active {
+    font-weight: bold;
+}
+
+/* タブ下の1pxライン */
+.request-tabs__border {
+    border-bottom: 1px solid #000000;
+    margin-bottom: 24px;
+}
+
+/* 申請一覧テーブルは attendance-table を流用 */
+
+/* ==============================
+   承認ボタン（画面13）
+============================== */
+
+.approval-button {
+    width: 130px;
+    height: 50px;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    color: #ffffff;
+    border-radius: 8px;
+}
+
+.approval-button--primary {
+    background-color: #000000;
+}
+
+.approval-button--done {
+    background-color: #696969;
+    cursor: default;
+}
